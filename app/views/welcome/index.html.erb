@@ -1,0 +1,6 @@
+<h1>Welcome to Cinemania <%= current_user.first_name if current_user%>!</h1>
+<h3>Here you can find essentials information and create list of your favourite movies!</h3>
+<p><%= link_to "Log In", login_path %></p>
+<p><%= link_to "Sign Up", new_user_path %></p>
+
+<p><i class="fab fa-github"><%= link_to "Login via GitHub", "/auth/github" %></i></p>

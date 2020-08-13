@@ -1,0 +1,14 @@
+<h1>Genres</h1>
+<div>
+<%= link_to "Only dramas |", genres_drama_path%>
+<%= link_to "Only actions |", genres_action_path%>
+</div>
+<ul>
+<% @genres.each do |genre| %>
+<li><%= genre.name %></li>
+<button class="edit"><%= link_to "Edit", edit_genre_path(genre), method: :get %></button>
+<button class="delete" ><%= link_to "Delete", { action: "destroy", id: genre.id }, method: :delete, data: {confirm: "Are you sure?"} %></button>
+<% end %>
+</ul>
+
+<p><%= link_to "Create new genre", new_genre_path %></p>

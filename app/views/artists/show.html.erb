@@ -1,0 +1,10 @@
+<%#= render partial: "/artist", locals: {artist: @artist }%>
+<h3>There are in total <%= pluralize(@artist.movies.count, "movie")%> where <%= @artist.name %> has participated </h3>
+<ul>
+<% @artist.movies.each do |movie| %>
+<li><%= link_to movie.title, user_movie_path(movie.user, movie) %></li>
+<% end %>
+</ul>
+
+<div><%= link_to "Add a new artist", new_artist_path %></div>
+<div><%= link_to "Delete #{@artist.name}", {action: "destroy", id: @artist.id }, method: :delete, data: { confirm: "Are you sure? "}%></div>

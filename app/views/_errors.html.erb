@@ -1,0 +1,10 @@
+<% if record.errors.any? %>
+<div>
+  <h3><i><%= pluralize(record.errors.count, "error")%> prevented your data from being saved</i></h3>
+</div>
+<ul>
+<%= record.errors.full_messages do |msg| %>
+<li><i><%= msg %></i></li>
+<% end %>
+</ul>
+<% end %>

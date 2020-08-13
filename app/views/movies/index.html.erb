@@ -1,0 +1,15 @@
+<%#= render "form" %>
+<h1>All the movies of <%= current_user.first_name %></h1><br>
+<div>
+  <h2>There are in total <%= pluralize(current_user.movies.count, "movie")%> in your list</h2>
+  <% current_user.movies.each.with_index(1) do |movie, index| %>
+    <div><h3><%= index %>. <%= link_to movie.title, user_movie_path(movie.user, movie) %></h3></div>
+    <button class="edit"><%= link_to "Edit", edit_user_movie_path(movie.user, movie), method: :get %></button>
+    <button class="delete"><%= link_to "Delete", {action: "destroy", id: movie.id }, method: :delete, data: { confirm: "Are you sure? "}%></button>
+  <% end %>
+  <p><%= link_to "Add a new movie", new_user_movie_path(@user) %></p>
+  <p>List of expensive movies which budgets are above 100 000 000</p>
+  <ul>
+  <li><%= expensive_movies(current_user.movies) %></li>
+  </ul>
+</div>

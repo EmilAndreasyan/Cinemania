@@ -1,0 +1,6 @@
+<h1>Title: <%= @movie.title %></h1>
+<p>Duration: <%= @movie.duration %></p>
+<p>Gerne: <%= @movie.genre.name %></p>
+<h3>Artist: <%= link_to @movie.artist.name, artist_path(@movie.artist) if @movie.artist %></h3>
+
+<p><%= link_to "All movies", user_movies_path %></p>

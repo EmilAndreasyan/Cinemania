@@ -1,0 +1,16 @@
+<%= render partial: "/errors", locals: {record: @artist}%>
+
+<h1>Add a new artist</h1>
+<%= form_for @artist do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %><br>
+<%= f.label :gender %>
+<%= f.text_field :gender %><br>
+<%= f.label :age %>
+<%= f.text_field :age %><br>
+<%= f.label "Select from the list of movies below" %><br>
+<%= f.collection_check_boxes :movie_ids, Movie.all, :id, :title, prompt: true %><br>
+<%= f.label "Select genre" %><br>
+<%= f.collection_select :genre_ids, Genre.all, :id, :name, prompt: true %><br>
+<%= f.submit %>
+<% end %>

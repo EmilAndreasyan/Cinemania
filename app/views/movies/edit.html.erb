@@ -1,0 +1,22 @@
+
+
+<%= form_for @movie do |f| %>
+<%= f.label :title %>
+<%= f.text_field :title %><br>
+<%= f.label :duration %>
+<%= f.text_field :duration %><br>
+<%= f.label :budget%>
+<%= f.number_field :budget %><br>
+<%#= f.file_field(:movie, :image, accept: 'image/png,image/gif,image/jpeg')%>
+<%= f.label "Choose an artist from a list" %><br>
+<%= f.collection_select(:artist_id, Artist.all, :id, :name, prompt: true) %><br>
+<%= f.label "Choose a genre from a list" %><br>
+<%= f.collection_select(:genre_id, Genre.all, :id, :name, prompt: "Select a genre") %><br>
+<%#= fields_for :genre do |genre_f| %>
+<%#= genre_f.label :genre %>
+<%#= genre_f.text_field :name %>
+<%# end %>
+<%#= hidden_field_tag :current_user_id, value: current_user.id %>
+<%#= f.hidden_field :genre_id, value: @genre.id %>
+<%= f.submit %>
+<% end %>

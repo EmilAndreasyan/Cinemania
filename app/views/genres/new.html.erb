@@ -1,0 +1,14 @@
+<%= render partial: "/errors", locals: {record: @genre } %>
+
+<%= form_for @genre do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.collection_select(:movie_ids, Movie.all, :id, :title, prompt: :blank) %>
+<%= f.collection_select(:artist_ids, Artist.all, :id, :name, prompt: :blank) %>
+<%= f.submit %>
+<% end %>
+
+
+<%#= form_tag("/genre") do %>
+<%#= render "form"%>
+<%# end %>

@@ -1,0 +1,24 @@
+<%= form_for artists do |f| %>
+<%= f.label "Name" %>
+<%= f.text_field :name %>
+<%= f.label "Gender" %>
+<%= f.collection_radio_buttons :gender, [[true, 'Male', false, 'Female', false 'Other']], :first, :last %>
+<%= f.label "Age" %>
+<%= f.number_field :age %>
+<%= f.label "Image" %>
+<%= f.file_field :image %>
+
+<%= f.fields_for :movies, Movie.new do |movie_b| %>
+<%= movie_b.label "Title "%>
+<%= movie_b.text_field :title %>
+<% end %>
+
+<%= f.collection_check_boxes :movie_ids, Movie.all, :id, :title do |b|%>
+<p>
+<%= b.label %>
+<%= b.check_box %>
+</p>
+<% end %>
+<%= f.submit %>
+<% end %>
+
